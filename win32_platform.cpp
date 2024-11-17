@@ -1,6 +1,21 @@
 #include "window.h"
 
 
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch(uMsg){
+        case WM_CLOSE:
+            DestroyWindow(hWnd);
+            break;
+        case WM_DESTROY:
+            PostQuitMessage(0);
+            return 0;
+    }
+
+    return DefWindowProc(hWnd, uMsg, wParam, lParam);
+}
+
+
 Window::Window()
     : m_hInstance(GetModuleHandle(nullptr))
 {
@@ -11,7 +26,7 @@ Window::Window()
     wndClass.hInstance = m_hInstance;
     wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
     wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndClass.lpfnWndProc = nullptr;
+    wndClass.lpfnWndProc = WindowProc;
 
     RegisterClass(&wndClass);
 
@@ -53,14 +68,19 @@ Window::~Window(){
 }
 
 bool Window::processmessages(){
-    return false;
+    MSG msg = {};
+
+    while (PeekMessage(&msg, nullptr, 0u, 0u, PM_REMOVE))
+    {
+        if (msg.message == WM_QUIT)
+        {
+            return false;
+        }
+
+        TranslateMessage(&msg);  // transforme l'appui sur le clavier en lettre
+        DispatchMessage(&msg);
+    }
+
+    return true;
 }
 
-
-
-int  WinMain(
-    HINSTANCE hInstance,
-    HINSTANCE hPrevInstance,
-    LPSTR lpCmdLine,
-    int nShowCmd
-) {}
