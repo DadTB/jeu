@@ -22,7 +22,7 @@ Window::Window()
     const wchar_t* CLASS_NAME = L"Hugos Windows Class";
 
     WNDCLASS wndClass = {};
-    wndClass.lpszClassName = (CLASS_NAME);
+    wndClass.lpszClassName = "Hugos Windows Class";
     wndClass.hInstance = m_hInstance;
     wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
     wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
@@ -43,10 +43,10 @@ Window::Window()
 
     AdjustWindowRect(&rect, style, false);
 
-    m_hWnd = CreateWindowEx(
+    m_hWnd = CreateWindowExA(
         0,
-        CLASS_NAME,
-        L"Title",
+        "CLASS_NAME",
+        "Title",
         style,
         rect.left,
         rect.top,
@@ -64,7 +64,7 @@ Window::Window()
 Window::~Window(){
     const wchar_t* CLASS_NAME = L"Hugos Windows Class";
 
-    UnregisterClass(CLASS_NAME, m_hInstance);
+    UnregisterClassA("salut", m_hInstance);
 }
 
 bool Window::processmessages(){
