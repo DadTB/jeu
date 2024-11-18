@@ -20,11 +20,3 @@ class Window{
     bool processmessages();
 
 };
-
-class patate{
-
-    public:
-
-    void salut();
-
-};

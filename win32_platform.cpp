@@ -1,4 +1,5 @@
 #include "window.h"
+#include <tchar.h>
 
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -15,14 +16,13 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
-
 Window::Window()
     : m_hInstance(GetModuleHandle(nullptr))
 {
     const wchar_t* CLASS_NAME = L"Hugos Windows Class";
 
     WNDCLASS wndClass = {};
-    wndClass.lpszClassName = CLASS_NAME;
+    wndClass.lpszClassName = (CLASS_NAME);
     wndClass.hInstance = m_hInstance;
     wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
     wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
