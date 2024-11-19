@@ -3,17 +3,17 @@
 
 // cette partie est pour les armes de melee
 
-class armemelee{
+class ArmeMelee{
 
 };
 
 // cette partie est pour les amres à distance
 
-class armedistance{
+class ArmeDistance{
 
 };
 
-class epee : public armemelee{
+class Epee : public ArmeMelee{
 
 };
 
