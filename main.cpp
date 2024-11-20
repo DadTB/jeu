@@ -3,8 +3,6 @@
 #include <iostream>
 #include <stdio.h>
 
-//#include "win32_platform.cpp"
-//#include "window.h"
 
 using namespace std;
 
