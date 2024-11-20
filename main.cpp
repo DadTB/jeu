@@ -3,30 +3,32 @@
 #include <iostream>
 #include <stdio.h>
 
-#include "win32_platform.cpp"
-#include "window.h"
+//#include "win32_platform.cpp"
+//#include "window.h"
 
 using namespace std;
 
-int main(){
-    cout << "salut la team\n" << endl;
+#include <SFML/Graphics.hpp>
 
-    Window* pWindow = new Window();
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
 
-    bool running = true;
-    while (running){
-
-        if (!pWindow->processmessages())
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            cout << "fermeture\n" << endl;
-            running = false;
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
 
-        // render
-        Sleep(10);
+        window.clear();
+        window.draw(shape);
+        window.display();
     }
-
-    delete pWindow;
 
     return 0;
 }
