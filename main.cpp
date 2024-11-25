@@ -30,3 +30,10 @@ int main()
 
     return 0;
 }
+
+// g++ -c main.cpp -I<sfml-install-path>/include
+
+// g++ main.o -o sfml-app -L<sfml-install-path>/lib -lsfml-graphics -lsfml-window -lsfml-system
+
+// vidéo tuto :
+// https://www.youtube.com/watch?v=rZE700aaT5I
