@@ -31,9 +31,9 @@ int main()
     return 0;
 }
 
-// g++ -c main.cpp -I<sfml-install-path>/include
+// g++ -c main.cpp -I"C:\Users\thoma\Documents\librairies\SFML-2.6.2\include"
 
-// g++ main.o -o sfml-app -L<sfml-install-path>/lib -lsfml-graphics -lsfml-window -lsfml-system
+// g++ main.o -o sfml-app -L"C:\Users\thoma\Documents\librairies\SFML-2.6.2\include" -lsfml-graphics -lsfml-window -lsfml-system
 
 // vidéo tuto :
 // https://www.youtube.com/watch?v=rZE700aaT5I
