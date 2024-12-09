@@ -2,22 +2,38 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
-
+#include <SFML/Graphics.hpp>
+#include "generationterrain.cpp"
 
 using namespace std;
 
-#include <SFML/Graphics.hpp>
+int taillecellule = 50;
+int grid[5][5] = {{1, 2, 1},{1,0,1}};
 
-void renderGrid()
+void renderGrid(sf::RenderWindow &window)
 {
-    
+    int x,y;
+
+    sf::RectangleShape cell(sf::Vector2f(taillecellule - 1.0f, taillecellule - 1.0f));
+    window.clear();
+    for (x = 0; x < 3; x++)
+        {
+            for (y = 0; y < 3; y++)
+            {
+                if (grid[x][y] == 1) // cette condition permet de ne remplir la fenêtre avec des cases blanches uniquement aux coordonnées dont la valeur est égale à 1
+                {
+                    cell.setPosition(y * taillecellule, x * taillecellule);
+                    window.draw(cell);
+                }
+            }
+        }
+    window.display();
 }
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(200, 200), "Donjon et dragons");
+    //cell.setPosition();
 
     while (window.isOpen())
     {
@@ -28,9 +44,8 @@ int main()
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        renderGrid(window);
+
     }
 
     return 0;
