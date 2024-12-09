@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
-#include "generationterrain.cpp"
+#include "Terrain/generationterrain.cpp"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ void renderGrid(sf::RenderWindow &window)
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Donjon et dragons");
+    sf::RenderWindow window(sf::VideoMode(1800, 1000), "Donjon et dragons");
     //cell.setPosition();
 
     while (window.isOpen())
