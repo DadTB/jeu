@@ -47,11 +47,11 @@ public:
         {
             direction.y = 1.f;  // Déplacer vers le bas
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
         {
             direction.x = -1.f;  // Déplacer vers la gauche
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             direction.x = 1.f;  // Déplacer vers la droite
         }

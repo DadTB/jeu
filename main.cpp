@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Terrain/generationterrain.cpp"
 #include "deplacement.cpp"
+#include "Inventaire/inventaire.cpp"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ void renderGrid(sf::RenderWindow &window)
 int main()
 {
     Deplacement d0;
+    Inventaire i0;
 
     sf::Clock clock;
 
@@ -58,6 +60,8 @@ int main()
 
         // Rendu du terrain
         renderGrid(window);
+
+        //window.draw(i0.ouvririnventaire());
 
         // Affichage du sprite du personnage
         window.draw(d0.getRectangle());
