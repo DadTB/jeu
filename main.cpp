@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "Terrain/generationterrain.cpp"
+#include "deplacement.cpp"
 
 using namespace std;
 
@@ -32,8 +33,14 @@ void renderGrid(sf::RenderWindow &window)
 
 int main()
 {
+
+    Deplacement d0;
+
+    sf::Clock clock;
+
     sf::RenderWindow window(sf::VideoMode(1800, 1000), "Donjon et dragons");
     //cell.setPosition();
+    
 
     while (window.isOpen())
     {
@@ -45,6 +52,13 @@ int main()
         }
 
         renderGrid(window);
+
+        d0.gereinput(sf::Keyboard::Key());
+
+        sf::Time deltaTime = clock.restart(); // Temps écoulé depuis la dernière itération
+        d0.mettreajour(deltaTime);
+
+        window.draw(d0.sprite);
 
     }
 
