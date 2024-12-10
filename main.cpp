@@ -9,38 +9,34 @@
 using namespace std;
 
 int taillecellule = 50;
-int grid[5][5] = {{1, 2, 1},{1,0,1}};
+int grid[5][5] = {{1, 2, 1}, {1, 0, 1}};
 
 void renderGrid(sf::RenderWindow &window)
 {
-    int x,y;
+    int x, y;
 
     sf::RectangleShape cell(sf::Vector2f(taillecellule - 1.0f, taillecellule - 1.0f));
     window.clear();
     for (x = 0; x < 3; x++)
+    {
+        for (y = 0; y < 3; y++)
         {
-            for (y = 0; y < 3; y++)
+            if (grid[x][y] == 1)  // Affichage des cases
             {
-                if (grid[x][y] == 1) // cette condition permet de ne remplir la fenêtre avec des cases blanches uniquement aux coordonnées dont la valeur est égale à 1
-                {
-                    cell.setPosition(y * taillecellule, x * taillecellule);
-                    window.draw(cell);
-                }
+                cell.setPosition(y * taillecellule, x * taillecellule);
+                window.draw(cell);
             }
         }
-    window.display();
+    }
 }
 
 int main()
 {
-
     Deplacement d0;
 
     sf::Clock clock;
 
     sf::RenderWindow window(sf::VideoMode(1800, 1000), "Donjon et dragons");
-    //cell.setPosition();
-    
 
     while (window.isOpen())
     {
@@ -51,23 +47,24 @@ int main()
                 window.close();
         }
 
-        renderGrid(window);
+        // Gérer les entrées de direction
+        d0.gereinput();
 
-        d0.gereinput(sf::Keyboard::Key());
-
-        sf::Time deltaTime = clock.restart(); // Temps écoulé depuis la dernière itération
+        // Temps écoulé depuis la dernière itération
+        sf::Time deltaTime = clock.restart();
+        
+        // Mettre à jour la position du personnage
         d0.mettreajour(deltaTime);
 
-        window.draw(d0.sprite);
+        // Rendu du terrain
+        renderGrid(window);
 
+        // Affichage du sprite du personnage
+        window.draw(d0.getRectangle());
+
+        // Affichage à l'écran
+        window.display();
     }
 
     return 0;
 }
-
-// g++ -c main.cpp -I"C:\Users\thoma\Documents\librairies\SFML-2.6.2\include"
-
-// g++ main.o -o sfml-app -L"C:\Users\thoma\Documents\librairies\SFML-2.6.2\include" -lsfml-graphics -lsfml-window -lsfml-system
-
-// vidéo tuto :
-// https://www.youtube.com/watch?v=rZE700aaT5I
