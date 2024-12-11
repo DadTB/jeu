@@ -8,7 +8,7 @@ class Deplacement
 public:
     int taillepersonnage = 50;  // Taille du personnage (carré)
 
-    sf::RectangleShape rectangle;  // Rectangle représentant le personnage
+    sf::RectangleShape personnage;  // Rectangle représentant le personnage
     float vitessedeplacement = 100.f;  // Vitesse de déplacement
     sf::Vector2f direction;     // Direction du mouvement
 
@@ -16,9 +16,9 @@ public:
     Deplacement()
     {
         // Créer le rectangle représentant le personnage
-        rectangle.setSize(sf::Vector2f(taillepersonnage, taillepersonnage));  // Définir la taille
-        rectangle.setFillColor(sf::Color(100, 250, 50));  // Définir la couleur (vert clair)
-        rectangle.setPosition(400.f, 300.f);  // Position initiale du personnage
+        personnage.setSize(sf::Vector2f(taillepersonnage, taillepersonnage));  // Définir la taille
+        personnage.setFillColor(sf::Color(100, 250, 50));  // Définir la couleur (vert clair)
+        personnage.setPosition(400.f, 300.f);  // Position initiale du personnage
 
         vitessedeplacement = 100.f;  // Initialisation de la vitesse
     }
@@ -29,7 +29,7 @@ public:
     void mettreajour(const sf::Time &deltaTime)
     {
         // Déplacer le rectangle (le personnage) en fonction de la direction et de la vitesse
-        rectangle.move(direction * vitessedeplacement * deltaTime.asSeconds());
+        personnage.move(direction * vitessedeplacement * deltaTime.asSeconds());
     }
 
     // Gérer les entrées utilisateur
@@ -66,6 +66,6 @@ public:
     // Récupérer le rectangle pour l'afficher dans le main
     sf::RectangleShape& getRectangle()
     {
-        return rectangle;
+        return personnage;
     }
 };

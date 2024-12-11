@@ -10,7 +10,7 @@
 using namespace std;
 
 int taillecellule = 50;
-int grid[5][5] = {{1, 2, 1}, {1, 0, 1}};
+int terrain[5][5] = {{1, 2, 1}, {1, 0, 1}};
 
 void renderGrid(sf::RenderWindow &window)
 {
@@ -22,7 +22,7 @@ void renderGrid(sf::RenderWindow &window)
     {
         for (y = 0; y < 3; y++)
         {
-            if (grid[x][y] == 1)  // Affichage des cases
+            if (terrain[x][y] == 1)  // Affichage des cases
             {
                 cell.setPosition(y * taillecellule, x * taillecellule);
                 window.draw(cell);
@@ -60,6 +60,8 @@ int main()
 
         // Rendu du terrain
         renderGrid(window);
+
+        //i0.ouvririnventaire();
 
         //window.draw(i0.ouvririnventaire());
 
