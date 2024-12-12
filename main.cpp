@@ -22,7 +22,7 @@ void renderGrid(sf::RenderWindow &window)
     {
         for (y = 0; y < 3; y++)
         {
-            if (terrain[x][y] == 1)  // Affichage des cases
+            if (terrain[x][y] == 1) // Affichage des cases
             {
                 cell.setPosition(y * taillecellule, x * taillecellule);
                 window.draw(cell);
@@ -34,7 +34,7 @@ void renderGrid(sf::RenderWindow &window)
 int main()
 {
     Deplacement d0;
-    Inventaire i0;
+    Inventaire i0(100.f, 100.f, 300.f, 200.f);
 
     sf::Clock clock;
 
@@ -47,23 +47,27 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::I)
+            {
+                i0.toggle(); // Ouvrir ou fermer l'inventaire
+            }
         }
+
+        // Détecter l'appui sur la touche I pour ouvrir ou fermer l'inventaire
 
         // Gérer les entrées de direction
         d0.gereinput();
 
         // Temps écoulé depuis la dernière itération
         sf::Time deltaTime = clock.restart();
-        
+
         // Mettre à jour la position du personnage
         d0.mettreajour(deltaTime);
 
         // Rendu du terrain
         renderGrid(window);
 
-        //i0.ouvririnventaire();
-
-        //window.draw(i0.ouvririnventaire());
+        i0.draw(window);
 
         // Affichage du sprite du personnage
         window.draw(d0.getRectangle());
