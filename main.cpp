@@ -3,13 +3,11 @@
 using namespace std;
 
 
-
-
 int main()
 {
     Jeu j0;
 
-    j0.DaggerFall2();
+    j0.DaggerFall2menutitre();
 
     return 0;
 }
