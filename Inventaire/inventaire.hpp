@@ -22,7 +22,7 @@ public:
         // Création du fond de l'inventaire (simple rectangle)
         m_background.setSize(m_size);
         m_background.setPosition(m_position);
-        m_background.setFillColor(sf::Color(0, 0, 0, 150)); // Couleur semi-transparente
+        m_background.setFillColor(sf::Color(250, 0, 0, 150)); // Couleur semi-transparente
 
         // Charge les textures des objets d'exemple
         if (!m_itemTexture.loadFromFile("item.png"))
@@ -44,8 +44,6 @@ public:
     // Ouvrir ou fermer l'inventaire
     void toggle()
     {
-        
-        std::cout << "touche i est pressé" << std::endl;
         m_isOpen = !m_isOpen;
     }
 
