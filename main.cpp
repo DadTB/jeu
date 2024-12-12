@@ -4,13 +4,12 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "Terrain/generationterrain.cpp"
-#include "deplacement.cpp"
+#include "deplacement/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
 
 using namespace std;
 
 bool estdansinven = false;
-
 
 
 int main()
@@ -72,3 +71,10 @@ int main()
 
     return 0;
 }
+
+
+/*
+sf::View view = window.getView();
+view.setCenter(playerPosition);  // Déplace la caméra à la position du joueur
+window.setView(view);
+*/
