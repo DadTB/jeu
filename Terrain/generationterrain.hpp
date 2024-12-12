@@ -2,7 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 #include <iostream>
-//#include "TextureTerrain/textureherbe.png"
+//#include "TextureTerrain/textureherbe.jpg"
 
 class GenerationTerrain
 {
@@ -15,10 +15,10 @@ public:
     {
         cell.setSize(sf::Vector2f(taillecellule - 1.0f, taillecellule - 1.0f));
 
-        if (!textureherbe.loadFromFile("textureherbe.png"))
+        if (!textureherbe.loadFromFile("textureherbe.jpg"))
         {
             // Si la texture ne se charge pas, afficher une erreur
-            std::cout << "Erreur de chargement de la texture !" << std::endl;
+            std::cerr << "Erreur de chargement de la texture !" << std::endl;
         }
         herbe.setSize(sf::Vector2f(taillecellule, taillecellule));
         herbe.setTexture(&textureherbe);
