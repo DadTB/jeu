@@ -11,7 +11,6 @@
 #include "Inventaire/inventaire.cpp"
 
 
-
 class Jeu
 {
 private:
@@ -86,12 +85,71 @@ public:
         }
     }
 
+    void DaggerFall2choixcreationpersonnage()
+    {
+        sf::Text titleText("Souhaitez vous choisir parmi les classes déjà existantes ou créer la votre ?", font, 50);
+        titleText.setFillColor(sf::Color::White);
+        titleText.setPosition(300, 100);
+
+        sf::Text choixrapide("Classe existante", font, 30);
+        choixrapide.setFillColor(sf::Color::Blue);
+        choixrapide.setPosition(350, 250);
+        
+        sf::Text choixlong("Créer classe", font, 30);
+        choixlong.setFillColor(sf::Color::Blue);
+        choixlong.setPosition(350, 300);
+
+        while (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+
+                if (event.type == sf::Event::MouseButtonPressed)
+                {
+                    if (event.mouseButton.button == sf::Mouse::Left)
+                    {
+                        // Vérifier si la souris est sur l'option "Nouvelle Partie"
+                        if (choixrapide.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+                        {
+                            std::cout << "Nouvelle Partie sélectionnée!" << std::endl;
+                            DaggerFall2choixclassepersonnage();
+                            // Appeler la fonction pour démarrer une nouvelle partie
+                        }
+                        // Vérifier si la souris est sur l'option "Charger Partie"
+                        else if (choixlong.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+                        {
+                            std::cout << "Charger Partie sélectionnée!" << std::endl;
+                            // Appeler la fonction pour charger une partie
+                        }
+                    }
+                }
+            }
+        }
+
+        window.clear();  // Effacer l'écran
+        window.draw(titleText);  // Dessiner le titre
+        window.draw(choixrapide);  // Dessiner le texte pour le choix court
+        window.draw(choixlong);  // Dessiner le texte pour le choix long
+        window.display();  // Afficher les éléments à l'écran
+    }
+
+    void DaggerFall2choixclassepersonnage()
+    {
+        sf::Text titleText("Quel classe souhaitez vous avoir ?", font, 50);
+        titleText.setFillColor(sf::Color::White);
+        titleText.setPosition(300, 100);
+
+    }
+
     void DaggerFall2menutitre()
     {
         // Créer le texte du titre
         sf::Text titleText("Mon Jeu", font, 50);
         titleText.setFillColor(sf::Color::White);
-        titleText.setPosition(300, 100); // Position du texte
+        titleText.setPosition(300, 100);
 
         // Créer le texte pour les options
         sf::Text newGameText("Nouvelle Partie", font, 30);
@@ -149,6 +207,5 @@ public:
             window.draw(exitText);  // Dessiner le texte pour quitter
             window.display();  // Afficher les éléments à l'écran
         }
-        
     }
 };
