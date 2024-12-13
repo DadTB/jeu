@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 
-#include "Terrain/generationterrain.cpp"
+#include "Monde/generationterrain.cpp"
 #include "deplacement/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
 
@@ -87,7 +87,7 @@ public:
 
     void DaggerFall2choixcreationpersonnage()
     {
-        sf::Text titleText("Souhaitez vous choisir parmi les classes déjà existantes ou créer la votre ?", font, 50);
+        sf::Text titleText("Souhaitez vous choisir parmi les classes deja existantes ou creer la votre ?", font, 40);
         titleText.setFillColor(sf::Color::White);
         titleText.setPosition(300, 100);
 
@@ -95,7 +95,7 @@ public:
         choixrapide.setFillColor(sf::Color::Blue);
         choixrapide.setPosition(350, 250);
         
-        sf::Text choixlong("Créer classe", font, 30);
+        sf::Text choixlong("Creer classe", font, 30);
         choixlong.setFillColor(sf::Color::Blue);
         choixlong.setPosition(350, 300);
 
@@ -127,13 +127,12 @@ public:
                     }
                 }
             }
+            window.clear();  // Effacer l'écran
+            window.draw(titleText);  // Dessiner le titre
+            window.draw(choixrapide);  // Dessiner le texte pour le choix court
+            window.draw(choixlong);  // Dessiner le texte pour le choix long
+            window.display();  // Afficher les éléments à l'écran
         }
-
-        window.clear();  // Effacer l'écran
-        window.draw(titleText);  // Dessiner le titre
-        window.draw(choixrapide);  // Dessiner le texte pour le choix court
-        window.draw(choixlong);  // Dessiner le texte pour le choix long
-        window.display();  // Afficher les éléments à l'écran
     }
 
     void DaggerFall2choixclassepersonnage()
@@ -141,6 +140,8 @@ public:
         sf::Text titleText("Quel classe souhaitez vous avoir ?", font, 50);
         titleText.setFillColor(sf::Color::White);
         titleText.setPosition(300, 100);
+
+        DaggerFall2();
 
     }
 
@@ -181,7 +182,7 @@ public:
                         if (newGameText.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
                         {
                             std::cout << "Nouvelle Partie sélectionnée!" << std::endl;
-                            DaggerFall2();
+                            DaggerFall2choixcreationpersonnage();
                             // Appeler la fonction pour démarrer une nouvelle partie
                         }
                         // Vérifier si la souris est sur l'option "Charger Partie"
