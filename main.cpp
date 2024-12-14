@@ -1,4 +1,4 @@
-#include "jeu.hpp"
+#include "Menutitre.hpp"
 
 using namespace std;
 
@@ -6,8 +6,9 @@ using namespace std;
 int main()
 {
     Jeu j0;
+    Menu m0;
 
-    j0.DaggerFall2menutitre();
+    m0.afficherMenuPrincipal();
 
     return 0;
 }
