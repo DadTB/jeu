@@ -6,6 +6,7 @@
 class GenerationTerrain
 {
 public:
+
     sf::RectangleShape cell;
     sf::RectangleShape herbe;
     sf::Texture textureherbe;
@@ -24,18 +25,24 @@ public:
     }
 
     int taillecellule = 50;
-    int terrain[5][5] = {{1, 2, 1, 2, 2}, {1, 0, 1, 2, 2}, {1, 2, 1, 2, 2}, {1, 1, 2, 2, 0}, {1, 2, 1, 2, 1}};
+    int terrain[10][20] = {
+        {1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {1, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {1, 1, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}};
 
     std::vector<sf::RectangleShape> walls; // vecteur pour stocker les murs
 
     void renderGrid(sf::RenderWindow &window)
     {
-        int x, y;
 
         window.clear();
-        for (x = 0; x < 5; x++)
+        for (int x = 0; x < 10; x++)
         {
-            for (y = 0; y < 5; y++)
+            for (int y = 0; y < 20; y++)
             {
                 if (terrain[x][y] == 1) // Affichage des cases
                 {

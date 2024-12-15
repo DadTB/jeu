@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Monde/generationterrain.cpp"
-#include "deplacement/deplacement.cpp"
+#include "Composant/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
 
 class Jeu
