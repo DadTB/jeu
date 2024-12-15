@@ -9,12 +9,14 @@
 #include "Monde/generationterrain.cpp"
 #include "Composant/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
+#include "Entitee.cpp"
 
 class Jeu
 {
 private:
     bool estdansinven = false;
     sf::Font font;
+    Entitee player;
 
 public:
 
@@ -59,7 +61,7 @@ public:
             sf::Time deltaTime = clock.restart();
 
             // Mettre à jour la position du personnage
-            d0.mettreajour(deltaTime, g0.walls);
+            d0.bouger(deltaTime, g0.walls);
 
             // Rendu du terrain
             g0.renderGrid(window);

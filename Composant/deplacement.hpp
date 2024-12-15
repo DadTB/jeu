@@ -26,7 +26,7 @@ public:
     ~Deplacement() {}
 
     // Mise à jour de la position en fonction de la direction
-    void mettreajour(const sf::Time &deltaTime, const std::vector<sf::RectangleShape> &murs)
+    void bouger(const sf::Time &deltaTime, const std::vector<sf::RectangleShape> &murs)
     {
         // Calcul du nouveau déplacement
         sf::Vector2f mouvement = direction * vitessedeplacement * deltaTime.asSeconds();
