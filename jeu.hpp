@@ -1,6 +1,5 @@
 #pragma once
 
-#include <fstream>
 #include <string>
 #include <iostream>
 #include <stdio.h>
@@ -10,19 +9,53 @@
 #include "Composant/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
 #include "Entitee.cpp"
+#include "Etat/Etatjeu.cpp"
 
 class Jeu
 {
 private:
-    bool estdansinven = false;
+    //bool estdansinven = false;
     sf::Font font;
     Entitee player;
 
+    // Variables
+    sf::RenderWindow *window;
+    sf::Event sfEvent;
+
+    sf::Clock dtClock;
+    float dt;
+
+    std::stack<Etat*> etats;
+
+    // Initialisation
+    void initWindow();
+    void initEtat();
+
 public:
 
-    Jeu() {}
+    // Constructeurs
+    Jeu();
+    virtual ~Jeu();
 
-    void DaggerFall2(sf::RenderWindow& window, sf::Clock& clock)
+    //////////////////////////////////
+    // Fonctions
+    //////////////////////////////////
+
+    // fonction basique
+    void finjeu();
+
+    // mise a jour
+    void mettreajourdt();
+    void mettreajourevenementSFML();
+    void mettreajour();
+
+    // render
+    void render();
+
+    // coeur
+    void lancer();
+
+    /*void DaggerFall2(sf::RenderWindow& window, sf::Clock& clock)
     {
         Deplacement d0;
         Inventaire i0(0.f, 0.f, 1800.f, 1000.f);
@@ -74,5 +107,5 @@ public:
             // Affichage à l'écran
             window.display();
         }
-    }
+    }*/
 };
