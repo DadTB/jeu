@@ -23,9 +23,11 @@ void Etatjeu::mettreajourinput(const float& dt)
 void Etatjeu::mettreajour(const float& dt)
 {
     this->mettreajourinput(dt);
+
+    this->player.mettreajour(dt);
 }
 
 void Etatjeu::render(sf::RenderTarget* cible)
 {
-
+    this->player.render(this->window);
 }

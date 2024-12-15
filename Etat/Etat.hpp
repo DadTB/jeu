@@ -7,10 +7,11 @@
 #include <stack>
 #include <map>
 #include <vector>
+#include "../Entitee/Entitee.cpp"
 
 class Etat
 {
-private:
+protected:
     sf::RenderWindow* window;
     std::vector<sf::Texture> textures;
     bool veutfin;

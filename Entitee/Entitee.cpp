@@ -3,6 +3,7 @@
 Entitee::Entitee()
 {
     this->forme.setSize(sf::Vector2f(50.f, 50.f));
+    this->forme.setFillColor(sf::Color::Green);
     this->vitessedeplacement = 100.f;
 }
 
@@ -35,7 +36,7 @@ void Entitee::mettreajour(const float &dt)
     }
 }
 
-void Entitee::render(sf::RenderTarget& cible)
+void Entitee::render(sf::RenderTarget* cible)
 {
-    cible.draw(this->forme);
+    cible->draw(this->forme);
 }

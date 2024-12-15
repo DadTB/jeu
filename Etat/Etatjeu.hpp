@@ -5,6 +5,7 @@
 class Etatjeu : public Etat
 {
 private:
+    Entitee player;
 
 public:
     Etatjeu(sf::RenderWindow* window);

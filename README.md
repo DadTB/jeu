@@ -4,4 +4,4 @@
 
 partie 2 de ComposantHitbox
 
-finir vidéo 8, 12 min
+revoir vidéo 8
