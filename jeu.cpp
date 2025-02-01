@@ -31,7 +31,10 @@ void Jeu::initEtat()
     this->etats.push(new Etatjeu(this->window));
 }
 
+
 // Constructeur
+
+
 Jeu::Jeu()
 {
     this->initWindow();
