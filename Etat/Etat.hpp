@@ -13,11 +13,18 @@ class Etat
 {
 protected:
     sf::RenderWindow* window;
-    std::vector<sf::Texture> textures;
+    std::map<std::string, int>* supportedKeys;
+    std::map<std::string, int> keybinds;
     bool veutfin;
 
+    // Resources
+    std::vector<sf::Texture> textures;
+
+    // Fonctions
+    virtual void initKeybinds() = 0;
+
 public:
-    Etat(sf::RenderWindow* window);
+    Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
     virtual ~Etat();
 
     const bool& avoirfin() const;

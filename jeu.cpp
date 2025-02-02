@@ -11,7 +11,7 @@ void Jeu::initWindow()
     unsigned framerate_limit = 120;
     bool vertical_sync_enabled = false;
 
-    if (ifs.is_open())
+    if (ifs.is_open())  // cette condition permet de récupérer les données stockées dans le fichier config.ini
     {
         std::getline(ifs, title);
         ifs >> window_bounds.width >> window_bounds.height;
@@ -21,23 +21,50 @@ void Jeu::initWindow()
 
     ifs.close();
 
-    this->window = new sf::RenderWindow(window_bounds, title);
-    this->window->setFramerateLimit(framerate_limit);
-    this->window->setVerticalSyncEnabled(vertical_sync_enabled);
+    this->window = new sf::RenderWindow(window_bounds, title);   // crée une nouvelle fenêtre avec en paramètre les données stockées dans config.ini
+    this->window->setFramerateLimit(framerate_limit);            // définis le max framerate
+    this->window->setVerticalSyncEnabled(vertical_sync_enabled); // permet de définir la synchro verticale
+}
+
+void Jeu::initKeys()
+{
+    std::ifstream ifs("Config/supported_keys.ini");
+
+    if (ifs.is_open())
+    {
+        std::string key = "";
+        int key_value = 0;
+
+        while (ifs >> key >> key_value)
+        {
+            this->supportedKeys[key] = key_value;
+        }
+    }
+
+    ifs.close();
+
+    // pour afficher (non vitale) - a retirer plus tard
+    for (auto i : this->supportedKeys)
+    {
+        std::cout << i.first << " " << i.second << "\n";
+    }
 }
 
 void Jeu::initEtat()
 {
-    this->etats.push(new Etatjeu(this->window));
+    this->etats.push(new Etatjeu(this->window, &this->supportedKeys));  // pile etats dans classe jeu de type Etat, pile de classe
 }
 
 
-// Constructeur
 
+//////////////////////////
+// Constructeur et destructeur
+//////////////////////////
 
 Jeu::Jeu()
 {
     this->initWindow();
+    this->initKeys();
     this->initEtat();
 }
 
@@ -45,7 +72,7 @@ Jeu::~Jeu()
 {
     delete this->window;
 
-    while(!this->etats.empty())
+    while(!this->etats.empty())      // permet de vider la pile etats
     {
         delete this->etats.top();
         this->etats.pop();
@@ -55,7 +82,6 @@ Jeu::~Jeu()
 //////////////////////////
 // Fonctions
 //////////////////////////
-
 
 void Jeu::finjeu()
 {

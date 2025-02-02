@@ -16,6 +16,11 @@ int main()
     return 0;
 }
 
+
+
+// classe Etatjeu est classe fille de classe Etat
+
+
 /*
 sf::View view = window.getView();
 view.setCenter(playerPosition);  // Déplace la caméra à la position du joueur

@@ -7,8 +7,11 @@ class Etatjeu : public Etat
 private:
     Entitee player;
 
+    // Fonctions
+    void initKeybinds();
+
 public:
-    Etatjeu(sf::RenderWindow* window);
+    Etatjeu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
     virtual ~Etatjeu();
 
     // Fonctions

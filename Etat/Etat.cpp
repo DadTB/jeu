@@ -1,8 +1,9 @@
 #include "Etat.hpp"
 
-Etat::Etat(sf::RenderWindow* window)
+Etat::Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
 {
     this->window = window;
+    this->supportedKeys = supportedKeys;
     this->veutfin = false;
 }
 
@@ -18,7 +19,7 @@ const bool& Etat::avoirfin() const
 
 void Etat::verifierfinEtat()
 {
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("FERMER"))))
     {
         this->veutfin = true;
     }

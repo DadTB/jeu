@@ -18,22 +18,7 @@ void Entitee::bouger(const float &dt, const float dir_x, const float dir_y)
 
 void Entitee::mettreajour(const float &dt)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-    {
-        this->bouger(dt, 0.f, -1.f); // Déplacer vers le haut
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        this->bouger(dt, 0.f, 1.f); // Déplacer vers le bas
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        this->bouger(dt, -1.f, 0.f); // Déplacer vers la gauche
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        this->bouger(dt, 1.f, 0.f); // Déplacer vers la droite
-    }
+
 }
 
 void Entitee::render(sf::RenderTarget* cible)
