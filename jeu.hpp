@@ -9,7 +9,7 @@
 #include "Composant/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
 //#include "Entitee.cpp"
-#include "Etat/Etatjeu.cpp"
+#include "Etat/MenuprincipalEtat.cpp"
 
 class Jeu
 {

@@ -52,6 +52,7 @@ void Jeu::initKeys()
 
 void Jeu::initEtat()
 {
+    this->etats.push(new MenuprincipalEtat(this->window, &this->supportedKeys));
     this->etats.push(new Etatjeu(this->window, &this->supportedKeys));  // pile etats dans classe jeu de type Etat, pile de classe
 }
 
@@ -139,6 +140,7 @@ void Jeu::render()
 
     this->window->display();
 }
+
 
 // coeur
 

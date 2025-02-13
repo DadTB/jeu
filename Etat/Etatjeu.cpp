@@ -20,7 +20,7 @@ Etatjeu::~Etatjeu()
 
 void Etatjeu::finetat()
 {
-    std::cout << "Fin de Etatjeu" << "\n";
+    //std::cout << "Fin de Etatjeu" << "\n";
 }
 
 void Etatjeu::mettreajourinput(const float &dt)
