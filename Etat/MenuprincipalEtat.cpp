@@ -1,5 +1,14 @@
 #include "MenuprincipalEtat.hpp"
 
+
+void MenuprincipalEtat::initFonts()
+{
+    if(this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
+    {
+        throw("ERROR::MenuprincipalEtat::COULD NOT LOAD FONT");
+    }
+}
+
 void MenuprincipalEtat::initKeybinds()
 {
     this->keybinds["FERMER"] = this->supportedKeys->at("Escape");
@@ -11,6 +20,7 @@ void MenuprincipalEtat::initKeybinds()
 
 MenuprincipalEtat::MenuprincipalEtat(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys) : Etat(window, supportedKeys)
 {
+    this->initFonts();
     this->initKeybinds();
 
     this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
@@ -33,6 +43,7 @@ void MenuprincipalEtat::mettreajourinput(const float &dt)
 
 void MenuprincipalEtat::mettreajour(const float &dt)
 {
+    this->updateMousePositions();
     this->mettreajourinput(dt);
 }
 

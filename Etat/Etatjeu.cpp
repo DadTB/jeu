@@ -48,6 +48,7 @@ void Etatjeu::mettreajourinput(const float &dt)
 
 void Etatjeu::mettreajour(const float &dt)
 {
+    this->updateMousePositions();
     this->mettreajourinput(dt);
 
     this->player.mettreajour(dt);

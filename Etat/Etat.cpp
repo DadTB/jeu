@@ -24,3 +24,10 @@ void Etat::verifierfinEtat()
         this->veutfin = true;
     }
 }
+
+void Etat::updateMousePositions()
+{
+    this->mousePosScreen = sf::Mouse::getPosition();
+    this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+    this->mousePosView = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
+}
