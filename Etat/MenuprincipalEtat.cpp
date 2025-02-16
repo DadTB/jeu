@@ -3,8 +3,9 @@
 
 void MenuprincipalEtat::initFonts()
 {
-    if(this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
+    if(!this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
     {
+        std::cout << "ça marche pas ici" << std::endl;
         throw("ERROR::MenuprincipalEtat::COULD NOT LOAD FONT");
     }
 }
@@ -23,12 +24,17 @@ MenuprincipalEtat::MenuprincipalEtat(sf::RenderWindow *window, std::map<std::str
     this->initFonts();
     this->initKeybinds();
 
+    this->gamestate_btn = new Bouton(100, 100, 150, 50,
+        &this->font, "Nouvelle partie",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+
     this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
     this->background.setFillColor(sf::Color::Magenta);
 }
 
 MenuprincipalEtat::~MenuprincipalEtat()
 {
+    delete this->gamestate_btn;
 }
 
 void MenuprincipalEtat::finetat()
