@@ -7,7 +7,8 @@
 #include <stack>
 #include <map>
 #include <vector>
-#include "../Entitee/Entitee.cpp"
+//#include "../Entitee/Entitee.cpp"
+#include "../Entitee/Joueur.cpp"
 
 class Etat
 {
@@ -23,7 +24,7 @@ std::stack<Etat*>* etats;
     sf::Vector2f mousePosView;
 
     // Resources
-    std::vector<sf::Texture> textures;
+    std::map<std::string, sf::Texture> textures;
 
     // Fonctions
     virtual void initKeybinds() = 0;
