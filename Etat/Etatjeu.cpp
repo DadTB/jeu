@@ -9,7 +9,7 @@ void Etatjeu::initKeybinds()
     this->keybinds["BOUGER_BAS"] = this->supportedKeys->at("S");
 }
 
-Etatjeu::Etatjeu(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys) : Etat(window, supportedKeys)
+Etatjeu::Etatjeu(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats) : Etat(window, supportedKeys, etats)
 {
     this->initKeybinds();
 }

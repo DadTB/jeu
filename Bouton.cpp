@@ -14,8 +14,8 @@ Bouton::Bouton(float x, float y, float width, float height, sf::Font* font,
     this->text.setFillColor(sf::Color::White);
     this->text.setCharacterSize(12);
     this->text.setPosition(
-        this->shape.getPosition().x / 2.f - this->text.getGlobalBounds().width / 2.f,
-        this->shape.getPosition().y / 2.f - this->text.getGlobalBounds().height / 2.f
+        this->shape.getPosition().x + (this->shape.getGlobalBounds().width / 2.f) - this->text.getGlobalBounds().width / 2.f,
+        this->shape.getPosition().y + (this->shape.getGlobalBounds().height / 2.f) - this->text.getGlobalBounds().height / 2.f
     );
 
     this->idleColor = idleColor;
@@ -86,4 +86,5 @@ void Bouton::update(const sf::Vector2f mousePos)
 void Bouton::render(sf::RenderTarget * target)
 {
     target->draw(this->shape);
+    target->draw(this->text);
 }

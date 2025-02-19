@@ -12,6 +12,7 @@
 class Etat
 {
 protected:
+std::stack<Etat*>* etats;
     sf::RenderWindow* window;
     std::map<std::string, int>* supportedKeys;
     std::map<std::string, int> keybinds;
@@ -28,7 +29,7 @@ protected:
     virtual void initKeybinds() = 0;
 
 public:
-    Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+    Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
     virtual ~Etat();
 
     const bool& avoirfin() const;

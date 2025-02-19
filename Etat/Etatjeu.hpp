@@ -11,7 +11,7 @@ private:
     void initKeybinds();
 
 public:
-    Etatjeu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+    Etatjeu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
     virtual ~Etatjeu();
 
     // Fonctions

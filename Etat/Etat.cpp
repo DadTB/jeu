@@ -1,9 +1,10 @@
 #include "Etat.hpp"
 
-Etat::Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
+Etat::Etat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats)
 {
     this->window = window;
     this->supportedKeys = supportedKeys;
+    this->etats = etats;
     this->veutfin = false;
 }
 
