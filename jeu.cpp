@@ -1,27 +1,54 @@
 #include "jeu.hpp"
 
+
+//////////////////////////
 // Fonctions d'initialisation
+//////////////////////////
+
+void Jeu::initVariables()
+{
+    this->window = NULL;
+    this->fullscreen = false;
+    this->dt = 0.f;
+}
+
 void Jeu::initWindow()
 {
 
     std::ifstream ifs("Config/window.ini");
+    this->videoModes = sf::VideoMode::getFullscreenModes();
 
     std::string title = "Daggerfall2";
-    sf::VideoMode window_bounds(1800, 1000);
+    //sf::VideoMode window_bounds(1800, 1000);
+    sf::VideoMode window_bounds = sf::VideoMode::getDesktopMode();
+    bool fullscreen = false;
     unsigned framerate_limit = 120;
     bool vertical_sync_enabled = false;
+    unsigned antialiasing_level = 0;
 
     if (ifs.is_open())  // cette condition permet de récupérer les données stockées dans le fichier config.ini
     {
         std::getline(ifs, title);
         ifs >> window_bounds.width >> window_bounds.height;
+        ifs >> fullscreen;
         ifs >> framerate_limit;
         ifs >> vertical_sync_enabled;
+        ifs >> antialiasing_level;
     }
 
     ifs.close();
 
-    this->window = new sf::RenderWindow(window_bounds, title);   // crée une nouvelle fenêtre avec en paramètre les données stockées dans config.ini
+    this->fullscreen = fullscreen;
+    this->windowSettings.antialiasingLevel = antialiasing_level;
+
+    if (this->fullscreen)
+    {
+        this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Fullscreen, windowSettings);   // crée une nouvelle fenêtre avec en paramètre les données stockées dans config.ini
+    }
+    else
+    {
+        this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Close, windowSettings);
+    }
     this->window->setFramerateLimit(framerate_limit);            // définis le max framerate
     this->window->setVerticalSyncEnabled(vertical_sync_enabled); // permet de définir la synchro verticale
 }

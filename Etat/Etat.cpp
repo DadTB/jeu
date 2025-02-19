@@ -18,12 +18,9 @@ const bool& Etat::avoirfin() const
     return this->veutfin;
 }
 
-void Etat::verifierfinEtat()
+void Etat::finetat()
 {
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("FERMER"))))
-    {
-        this->veutfin = true;
-    }
+    this->veutfin = true;
 }
 
 void Etat::updateMousePositions()

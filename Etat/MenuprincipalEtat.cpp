@@ -1,6 +1,29 @@
 #include "MenuprincipalEtat.hpp"
 
 
+/////////////////////////////////////////////
+// Fonctions d'initialisation
+/////////////////////////////////////////////
+
+void MenuprincipalEtat::initVariables()
+{
+
+}
+
+void MenuprincipalEtat::initBackground()
+{
+    this->background.setSize(
+        sf::Vector2f
+        (static_cast<float>(this->window->getSize().x),
+        static_cast<float>(this->window->getSize().y)));
+
+    if(!this->backgroundTexture.loadFromFile("Ressources/images/Backgrounds/fond1carte1444.png"))
+    {
+        throw"ERREUR::MENUPRINCIPALETAT::BACKGROUND_PAS_CHARGE";
+    }
+    this->background.setTexture(&this->backgroundTexture);
+}
+
 void MenuprincipalEtat::initFonts()
 {
     if(!this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
@@ -19,11 +42,15 @@ void MenuprincipalEtat::initKeybinds()
     this->keybinds["BOUGER_BAS"] = this->supportedKeys->at("S");
 }
 
-void MenuprincipalEtat::initBouton()
+void MenuprincipalEtat::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
 {
     this->boutons["GAME_STATE"] = new Bouton(100, 100, 150, 50,
         &this->font, "Nouvelle partie",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+
+    this->boutons["PARAMETRE"] = new Bouton(100, 200, 150, 50,
+        &this->font, "Parametres",
+        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 
     this->boutons["EXIT_STATE"] = new Bouton(100, 300, 150, 50,
         &this->font, "Quittez le jeu",
@@ -32,13 +59,11 @@ void MenuprincipalEtat::initBouton()
 
 MenuprincipalEtat::MenuprincipalEtat(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats) : Etat(window, supportedKeys, etats)
 {
+    this->initVariables();
+    this->initBackground();
     this->initFonts();
     this->initKeybinds();
     this->initBouton();
-
-
-    this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-    this->background.setFillColor(sf::Color::Magenta);
 }
 
 MenuprincipalEtat::~MenuprincipalEtat()
@@ -50,14 +75,9 @@ MenuprincipalEtat::~MenuprincipalEtat()
     }
 }
 
-void MenuprincipalEtat::finetat()
-{
-    //std::cout << "Fin de MenuprincipalEtat" << "\n";
-}
-
 void MenuprincipalEtat::mettreajourinput(const float &dt)
 {
-    this->verifierfinEtat();
+    
 }
 
 void MenuprincipalEtat::mettreajourBoutons()
@@ -77,7 +97,7 @@ void MenuprincipalEtat::mettreajourBoutons()
     // Permet de quittez le jeu
     if (this->boutons["EXIT_STATE"]->isPressed())
     {
-        this->veutfin = true;
+        this->finetat();
     }
 }
 
@@ -105,4 +125,16 @@ void MenuprincipalEtat::render(sf::RenderTarget *cible)
     cible->draw(this->background);
 
     this->renderBoutons(cible);
+
+    // Debug : à retirer, permet d'afficher du texte sous la souris
+    /*
+    sf::Text mouseText;
+    mouseText.setPosition(this->mousePosView);
+    mouseText.setFont(this->font);
+    mouseText.setCharacterSize(12);
+    std::stringstream ss;
+    ss << this->mousePosView.x << " " << mousePosView.y;
+    mouseText.setString(ss.str());
+
+    cible->draw(mouseText);*/
 }

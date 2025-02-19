@@ -33,10 +33,8 @@ public:
     virtual ~Etat();
 
     const bool& avoirfin() const;
+    void finetat();
 
-    virtual void verifierfinEtat();
-
-    virtual void finetat() = 0;
     virtual void updateMousePositions();
     virtual void mettreajourinput(const float& dt) = 0;
     virtual void mettreajour(const float& dt) = 0;

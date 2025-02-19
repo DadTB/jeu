@@ -16,16 +16,11 @@ Etatjeu::Etatjeu(sf::RenderWindow *window, std::map<std::string, int>* supported
 
 Etatjeu::~Etatjeu()
 {
-}
-
-void Etatjeu::finetat()
-{
-    //std::cout << "Fin de Etatjeu" << "\n";
+    
 }
 
 void Etatjeu::mettreajourinput(const float &dt)
 {
-    this->verifierfinEtat();
 
     // met à jour les input du joueur
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("BOUGER_HAUT"))))
@@ -43,6 +38,10 @@ void Etatjeu::mettreajourinput(const float &dt)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("BOUGER_DROITE"))))
     {
         this->player.bouger(dt, 1.f, 0.f); // Déplacer vers la droite
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("FERMER"))))
+    {
+        this->finetat();
     }
 }
 

@@ -16,7 +16,6 @@ public:
 
     // Fonctions
 
-    void finetat();
     void mettreajourinput(const float& dt);
     void mettreajour(const float& dt);
     void render(sf::RenderTarget* cible);

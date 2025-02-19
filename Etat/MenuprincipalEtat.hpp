@@ -8,12 +8,15 @@ class MenuprincipalEtat : public Etat
 {
 private:
     // Variables
+    sf::Texture backgroundTexture;
     sf::RectangleShape background;
     sf::Font font;
 
     std::map<std::string, Bouton*> boutons;
 
     // Fonctions
+    void initVariables();
+    void initBackground();
     void initFonts();
     void initKeybinds();
     void initBouton();
@@ -23,8 +26,6 @@ public:
     virtual ~MenuprincipalEtat();
 
     // Fonctions
-
-    void finetat();
 
     void mettreajourinput(const float& dt);
     void mettreajourBoutons();
