@@ -15,9 +15,7 @@ void Etatjeu::initKeybinds()
 
 void Etatjeu::initTextures()
 {
-    sf::Texture temp;
-    temp.loadFromFile("Ressources/images/Sprites/Joueur/Joueur_repos.png");
-    this->textures["JOUEUR_REPOS"] = temp;
+    this->textures["JOUEUR_REPOS"].loadFromFile("Ressources/images/Sprites/Joueur/Joueur_repos.png");
 }
 
 void Etatjeu::initJoueur()
