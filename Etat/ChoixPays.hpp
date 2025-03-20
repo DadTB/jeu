@@ -12,6 +12,8 @@ private:
     sf::RectangleShape background;
     sf::Font font;
     int niveau;
+    std::string choixPays;
+    std::string pays;
 
     std::map<std::string, Bouton*> boutonsniveau1;
     std::map<std::string, Bouton*> boutonsniveau2;
@@ -22,6 +24,7 @@ private:
     void initFonts();
     void initKeybinds();
     void initBouton();
+    void initBoutonPays(std::string pays);
 
 public:
     ChoixPays(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
@@ -31,7 +34,7 @@ public:
 
     void mettreajourinput(const float& dt);
     void mettreajourBoutons();
-    void choixArbreMission();
+    void choixArbreMission(std::string pays);
     void mettreajour(const float& dt);
     void renderBoutons(sf::RenderTarget* cible);
     void render(sf::RenderTarget* cible);

@@ -47,9 +47,32 @@ void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'
     this->boutonsniveau1["FRANCE"] = new Bouton(300, 100, 150, 50,
         &this->font, "France",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
-    this->boutonsniveau2["FRANCE"] = new Bouton(300, 100, 150, 50,
-        &this->font, "France",
-        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    
+    
+}
+
+void ChoixPays::initBoutonPays(std::string pays)
+{
+    std::string filename = "common/missions/France/nom_arbre.txt"; // Nom du fichier à lire
+    std::ifstream file(filename); // Ouvre le fichier en lecture
+        
+    if (!file)
+    {
+        std::cerr << "Erreur : Impossible d'ouvrir le fichier " << filename << std::endl;
+    }
+
+    std::string line;
+    int place = 1;
+    while (std::getline(file, line))
+    { // Lit ligne par ligne
+        //std::cout << "Ligne lue : " << line << std::endl; // Affiche la ligne
+        this->boutonsniveau2[line] = new Bouton(100 * place, 100, 150, 50,
+            &this->font, line,
+            sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+            place += 2;
+    }
+
+    file.close(); // Ferme le fichier
 }
 
 /////////////////////////////////////////////
@@ -67,15 +90,15 @@ ChoixPays::ChoixPays(sf::RenderWindow *window, std::map<std::string, int>* suppo
 
 ChoixPays::~ChoixPays()
 {
-    auto it = this->boutonsniveau1.begin();
-    for (it = this->boutonsniveau1.begin(); it != this->boutonsniveau1.end(); ++it)
+    auto it1 = this->boutonsniveau1.begin();
+    for (it1 = this->boutonsniveau1.begin(); it1 != this->boutonsniveau1.end(); ++it1)
     {
-        delete it->second;
+        delete it1->second;
     }
-    auto it = this->boutonsniveau2.begin();
-    for (it = this->boutonsniveau2.begin(); it != this->boutonsniveau2.end(); ++it)
+    auto it2 = this->boutonsniveau2.begin();
+    for (it2 = this->boutonsniveau2.begin(); it2 != this->boutonsniveau2.end(); ++it2)
     {
-        delete it->second;
+        delete it2->second;
     }
 }
 
@@ -95,15 +118,26 @@ void ChoixPays::mettreajourBoutons()
     if (this->boutonsniveau1["FRANCE"]->isPressed())
     {
         this->niveau = 2;
-        this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
+        this->choixPays = "France";
+        this->initBoutonPays("France");
+        this->choixArbreMission("France");
+        //this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
     }
 }
 
-void ChoixPays::choixArbreMission()
+void ChoixPays::choixArbreMission(std::string pays)
 {
-    for (auto &it : this->boutonsniveau1)
+    for (auto &it : this->boutonsniveau2)
     {
         it.second->update(this->mousePosView);
+    }
+    for (auto &pair : this->boutonsniveau2)
+    {
+        std::string nomarbre = pair.first;
+        if (this->boutonsniveau2[nomarbre]->isPressed())
+        {
+            this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
+        }
     }
 }
 
@@ -142,16 +176,4 @@ void ChoixPays::render(sf::RenderTarget *cible)
     cible->draw(this->background);
 
     this->renderBoutons(cible);
-
-    // Debug : à retirer, permet d'afficher du texte sous la souris
-    /*
-    sf::Text mouseText;
-    mouseText.setPosition(this->mousePosView);
-    mouseText.setFont(this->font);
-    mouseText.setCharacterSize(12);
-    std::stringstream ss;
-    ss << this->mousePosView.x << " " << mousePosView.y;
-    mouseText.setString(ss.str());
-
-    cible->draw(mouseText);*/
 }
