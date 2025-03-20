@@ -66,7 +66,7 @@ void ChoixPays::initBoutonPays(std::string pays)
     while (std::getline(file, line))
     { // Lit ligne par ligne
         //std::cout << "Ligne lue : " << line << std::endl; // Affiche la ligne
-        this->boutonsniveau2[line] = new Bouton(100 * place, 100, 150, 50,
+        this->boutonsniveau2[line] = new Bouton(100 * place, 300, 150, 50,
             &this->font, line,
             sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
             place += 2;
@@ -120,12 +120,11 @@ void ChoixPays::mettreajourBoutons()
         this->niveau = 2;
         this->choixPays = "France";
         this->initBoutonPays("France");
-        this->choixArbreMission("France");
         //this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
     }
 }
 
-void ChoixPays::choixArbreMission(std::string pays)
+void ChoixPays::choixArbreMission()
 {
     for (auto &it : this->boutonsniveau2)
     {
@@ -146,7 +145,15 @@ void ChoixPays::mettreajour(const float &dt)
     this->updateMousePositions();
     this->mettreajourinput(dt);
 
-    this->mettreajourBoutons();
+    if (this->niveau == 1)
+    {
+        this->mettreajourBoutons();
+    }
+    else if (this->niveau == 2)
+    {
+        this->choixArbreMission();
+    }
+    
 }
 
 void ChoixPays::renderBoutons(sf::RenderTarget* cible)

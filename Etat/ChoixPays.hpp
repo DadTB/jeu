@@ -34,7 +34,7 @@ public:
 
     void mettreajourinput(const float& dt);
     void mettreajourBoutons();
-    void choixArbreMission(std::string pays);
+    void choixArbreMission();
     void mettreajour(const float& dt);
     void renderBoutons(sf::RenderTarget* cible);
     void render(sf::RenderTarget* cible);
