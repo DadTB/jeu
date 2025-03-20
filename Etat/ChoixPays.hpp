@@ -1,19 +1,20 @@
 #pragma once
 
-//#include "Etatjeu.cpp"
-#include "ChoixPays.cpp"
-//#include "../Bouton.cpp"
+#include "Etatjeu.cpp"
+#include "../Bouton.cpp"
 #include <iostream>
 
-class MenuprincipalEtat : public Etat
+class ChoixPays : public Etat
 {
 private:
     // Variables
     sf::Texture backgroundTexture;
     sf::RectangleShape background;
     sf::Font font;
+    int niveau;
 
-    std::map<std::string, Bouton*> boutons;
+    std::map<std::string, Bouton*> boutonsniveau1;
+    std::map<std::string, Bouton*> boutonsniveau2;
 
     // Fonctions
     void initVariables();
@@ -23,13 +24,14 @@ private:
     void initBouton();
 
 public:
-    MenuprincipalEtat(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
-    virtual ~MenuprincipalEtat();
+    ChoixPays(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
+    virtual ~ChoixPays();
 
     // Fonctions
 
     void mettreajourinput(const float& dt);
     void mettreajourBoutons();
+    void choixArbreMission();
     void mettreajour(const float& dt);
     void renderBoutons(sf::RenderTarget* cible);
     void render(sf::RenderTarget* cible);

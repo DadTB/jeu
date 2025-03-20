@@ -1,16 +1,16 @@
-#include "MenuprincipalEtat.hpp"
+#include "ChoixPays.hpp"
 
 
 /////////////////////////////////////////////
 // Fonctions d'initialisation
 /////////////////////////////////////////////
 
-void MenuprincipalEtat::initVariables()
+void ChoixPays::initVariables()
 {
-
+    this->niveau = 1;
 }
 
-void MenuprincipalEtat::initBackground()
+void ChoixPays::initBackground()
 {
     this->background.setSize(
         sf::Vector2f
@@ -24,7 +24,7 @@ void MenuprincipalEtat::initBackground()
     this->background.setTexture(&this->backgroundTexture);
 }
 
-void MenuprincipalEtat::initFonts()
+void ChoixPays::initFonts()
 {
     if(!this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
     {
@@ -33,7 +33,7 @@ void MenuprincipalEtat::initFonts()
     }
 }
 
-void MenuprincipalEtat::initKeybinds()
+void ChoixPays::initKeybinds()
 {
     this->keybinds["FERMER"] = this->supportedKeys->at("Escape");
     this->keybinds["BOUGER_GAUCHE"] = this->supportedKeys->at("Q");
@@ -42,28 +42,21 @@ void MenuprincipalEtat::initKeybinds()
     this->keybinds["BOUGER_BAS"] = this->supportedKeys->at("S");
 }
 
-void MenuprincipalEtat::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
+void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
 {
-    this->boutons["GAME_STATE"] = new Bouton(100, 100, 150, 50,
-        &this->font, "Nouvelle partie",
+    this->boutonsniveau1["FRANCE"] = new Bouton(300, 100, 150, 50,
+        &this->font, "France",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
-
-    this->boutons["PARAMETRE"] = new Bouton(100, 200, 150, 50,
-        &this->font, "Parametres",
-        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
-
-    this->boutons["EXIT_STATE"] = new Bouton(100, 300, 150, 50,
-        &this->font, "Quittez le jeu",
-        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutonsniveau2["FRANCE"] = new Bouton(300, 100, 150, 50,
+        &this->font, "France",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 }
-
 
 /////////////////////////////////////////////
 // Constructeurs et destructeurs
 /////////////////////////////////////////////
 
-
-MenuprincipalEtat::MenuprincipalEtat(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats) : Etat(window, supportedKeys, etats)
+ChoixPays::ChoixPays(sf::RenderWindow *window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats) : Etat(window, supportedKeys, etats)
 {
     this->initVariables();
     this->initBackground();
@@ -72,43 +65,49 @@ MenuprincipalEtat::MenuprincipalEtat(sf::RenderWindow *window, std::map<std::str
     this->initBouton();
 }
 
-MenuprincipalEtat::~MenuprincipalEtat()
+ChoixPays::~ChoixPays()
 {
-    auto it = this->boutons.begin();
-    for (it = this->boutons.begin(); it != this->boutons.end(); ++it)
+    auto it = this->boutonsniveau1.begin();
+    for (it = this->boutonsniveau1.begin(); it != this->boutonsniveau1.end(); ++it)
+    {
+        delete it->second;
+    }
+    auto it = this->boutonsniveau2.begin();
+    for (it = this->boutonsniveau2.begin(); it != this->boutonsniveau2.end(); ++it)
     {
         delete it->second;
     }
 }
 
-void MenuprincipalEtat::mettreajourinput(const float &dt)
+void ChoixPays::mettreajourinput(const float &dt)
 {
     
 }
 
-void MenuprincipalEtat::mettreajourBoutons()
+void ChoixPays::mettreajourBoutons()
 {
     /* Cette fonction permet de mettre a jour l'état de tous les boutons et d'activer leur fonctionnalités */
-    for (auto &it : this->boutons)
+    for (auto &it : this->boutonsniveau1)
     {
         it.second->update(this->mousePosView);
     }
 
-    // Nouvelle Partie
-    if (this->boutons["GAME_STATE"]->isPressed())
+    if (this->boutonsniveau1["FRANCE"]->isPressed())
     {
-        //this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));  // pile etats dans classe jeu de type Etat, pile de classe
-        this->etats->push(new ChoixPays(this->window, this->supportedKeys, this->etats));
-    }
-
-    // Permet de quittez le jeu
-    if (this->boutons["EXIT_STATE"]->isPressed())
-    {
-        this->finetat();
+        this->niveau = 2;
+        this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
     }
 }
 
-void MenuprincipalEtat::mettreajour(const float &dt)
+void ChoixPays::choixArbreMission()
+{
+    for (auto &it : this->boutonsniveau1)
+    {
+        it.second->update(this->mousePosView);
+    }
+}
+
+void ChoixPays::mettreajour(const float &dt)
 {
     this->updateMousePositions();
     this->mettreajourinput(dt);
@@ -116,15 +115,26 @@ void MenuprincipalEtat::mettreajour(const float &dt)
     this->mettreajourBoutons();
 }
 
-void MenuprincipalEtat::renderBoutons(sf::RenderTarget* cible)
+void ChoixPays::renderBoutons(sf::RenderTarget* cible)
 {
-    for (auto &it : this->boutons)
+    if (this->niveau == 1)
     {
-        it.second->render(cible);
+        for (auto &it : this->boutonsniveau1)
+        {
+            it.second->render(cible);
+        }
     }
+    else if (this->niveau == 2)
+    {
+        for (auto &it : this->boutonsniveau2)
+        {
+            it.second->render(cible);
+        }
+    }
+    
 }
 
-void MenuprincipalEtat::render(sf::RenderTarget *cible)
+void ChoixPays::render(sf::RenderTarget *cible)
 {
     if (!cible)
         cible = this->window;
