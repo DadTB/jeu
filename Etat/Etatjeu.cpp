@@ -20,7 +20,7 @@ void Etatjeu::initTextures()
 
 void Etatjeu::initJoueur()
 {
-    this->player = new Joueur(0, 0, &this->textures["JOUEUR_REPOS"]);
+    this->player = new Joueur(100, 100, &this->textures["JOUEUR_REPOS"]);
 }
 
 ///////////////////////////////////////////
