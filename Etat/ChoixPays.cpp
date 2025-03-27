@@ -135,6 +135,7 @@ void ChoixPays::choixArbreMission()
         std::string nomarbre = pair.first;
         if (this->boutonsniveau2[nomarbre]->isPressed())
         {
+            // ajout code pour valider que l'arbre est sélectionné
             this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
         }
     }

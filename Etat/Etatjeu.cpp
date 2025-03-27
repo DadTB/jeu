@@ -32,6 +32,7 @@ Etatjeu::Etatjeu(sf::RenderWindow *window, std::map<std::string, int>* supported
     this->initKeybinds();
     this->initTextures();
     this->initJoueur();
+    //this->initPile();
 }
 
 Etatjeu::~Etatjeu()

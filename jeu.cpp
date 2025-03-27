@@ -140,7 +140,7 @@ void Jeu::mettreajour()
     {
         this->etats.top()->mettreajour(this->dt);
 
-        if (this->etats.top()->avoirfin()) // permet de vider la pile et de mettre fin au if
+        if (this->etats.top()->avoirfin()) // permet de vider la pile et de mettre fin au if si on appuie sur échap
         {
             this->etats.top()->finetat(); // appelle le boolein si on appui sur échap
             delete this->etats.top();
