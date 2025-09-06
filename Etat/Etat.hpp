@@ -10,10 +10,10 @@
 //#include "../Entitee/Entitee.cpp"
 #include "../Entitee/Joueur.cpp"
 
-class Etat
+class Etat //classe abstraite, toutes les classes de menu doivent hériter de cette classe
 {
 protected:
-std::stack<Etat*>* etats;
+std::stack<Etat*>* etats; // etats est un pointeur vers la pile, la pile est une pile de pointeur vers des états
     sf::RenderWindow* window;
     std::map<std::string, int>* supportedKeys;
     std::map<std::string, int> keybinds;

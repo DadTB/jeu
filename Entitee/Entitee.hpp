@@ -29,7 +29,7 @@ protected:
 
 public:
     Entitee();
-    virtual ~Entitee();
+    virtual ~Entitee(); //on le met en virtuel pour que si jamais on supprime Entitee, les destructeurs des classes qui auront un objet hérité d'un objet Entitee seront aussi appelés
 
     // Fonctions de composant
     void creerSprite(sf::Texture* texture);

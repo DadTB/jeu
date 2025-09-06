@@ -1,0 +1,14 @@
+dirigeant = 
+{
+    nom = Charles VII
+    age = 19
+    maison = Valois
+    dynastie = Capet
+    naissance 22/02/1403
+    religion = catholique
+}
+
+reforme =
+{
+    
+}

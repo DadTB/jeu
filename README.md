@@ -12,3 +12,5 @@ fichier à modifier si on veut rajouter une touche :
     - supported_keys.ini
     - Etatjeu.cpp
     - MenuprincipalEtat.cpp
+
+le jeu commence le 21 octobre 1422
