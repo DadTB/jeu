@@ -132,20 +132,24 @@ void Jeu::mettreajourevenementSFML()
     }
 }
 
-void Jeu::mettreajour()
+void Jeu::mettreajour() // permet de mettre à jour les evenements et de fermer la fenêtre
 {
     this->mettreajourevenementSFML();
 
-    if (!this->etats.empty())
+    if (!this->etats.empty()) // renvoie false si elle est vide et true si il y a quelque chose
     {
         this->etats.top()->mettreajour(this->dt);
 
         if (this->etats.top()->avoirfin()) // permet de vider la pile et de mettre fin au if si on appuie sur échap
         {
-            this->etats.top()->finetat(); // appelle le boolein si on appui sur échap
-            delete this->etats.top();
-            this->etats.pop();
+            while (!this->etats.empty())
+            {
+                this->etats.top()->finetat(); // appelle le boolein si on appui sur échap
+                delete this->etats.top();
+                this->etats.pop();
+            }
         }
+
     }
     else // permet de fermer la fenêtre si la pile est vide
     {
