@@ -8,11 +8,11 @@
 void Jeu::initVariables()
 {
     this->window = NULL;
-    this->fullscreen = false;
+    this->fullscreen = false; // si on met à true ça se met en plein écran
     this->dt = 0.f;
 }
 
-void Jeu::initWindow()
+void Jeu::initWindow() // fonction pour la taille et tout de la window
 {
 
     std::ifstream ifs("Config/window.ini");
@@ -147,7 +147,7 @@ void Jeu::mettreajour()
             this->etats.pop();
         }
     }
-    else
+    else // permet de fermer la fenêtre si la pile est vide
     {
         this->finjeu();
         this->window->close();
@@ -158,14 +158,14 @@ void Jeu::mettreajour()
 
 void Jeu::render()
 {
-    this->window->clear();
+    this->window->clear(); // supprime tout ce qui est affiché de l'écran
 
-    if (!this->etats.empty())
+    if (!this->etats.empty()) // vérifie si la stack etats est vide
     {
-        this->etats.top()->render(this->window);
+        this->etats.top()->render(this->window); // si etats n'est pas vide alors on affiche les éléments (je crois)
     }
 
-    this->window->display();
+    this->window->display(); // affiche l'écran
 }
 
 

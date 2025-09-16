@@ -50,7 +50,7 @@ void Etatjeu::mettreajourinput(const float &dt)
     // met à jour les input du joueur
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("BOUGER_HAUT"))))
     {
-        this->player->bouger(dt, 0.f, -1.f); // Déplacer vers le haut
+        this->player->bouger(dt, 0.f, -1.f); // Déplacer vers le haut 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("BOUGER_BAS"))))
     {
@@ -66,7 +66,7 @@ void Etatjeu::mettreajourinput(const float &dt)
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("FERMER"))))
     {
-        this->finetat();
+        this->finetat(); // en l'occurence et pour le moment on revient en arrière
     }
 }
 

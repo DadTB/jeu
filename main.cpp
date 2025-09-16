@@ -6,12 +6,9 @@ using namespace std;
 
 int main()
 {
-    Jeu j0;
-    //Menu m0;
+    Jeu j0; // Création de l'objet jeu
 
-    //m0.afficherMenuPrincipal();
-
-    j0.lancer();
+    j0.lancer(); // appel de la méthode lancer de la classe Jeu
 
     return 0;
 }
