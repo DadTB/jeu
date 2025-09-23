@@ -9,6 +9,7 @@
 #include <vector>
 //#include "../Entitee/Entitee.cpp"
 #include "../Entitee/Joueur.cpp"
+#include "../Bouton.cpp"
 
 class Etat //classe abstraite, toutes les classes de menu doivent hériter de cette classe
 {

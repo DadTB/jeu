@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Etatjeu.cpp"
-#include "../Bouton.cpp"
 #include <iostream>
 
 class ChoixPays : public Etat
