@@ -44,15 +44,15 @@ void MenuprincipalEtat::initKeybinds()
 
 void MenuprincipalEtat::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
 {
-    this->boutons["GAME_STATE"] = new Bouton(100, 100, 150, 50,
+    this->boutons["GAME_STATE"] = new Bouton(100, 100, 0, 0, 150, 0, 150, 50, 0, 50,
         &this->font, "Nouvelle partie",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 
-    this->boutons["PARAMETRE"] = new Bouton(100, 200, 150, 50,
+    this->boutons["PARAMETRE"] = new Bouton(100, 200, 0, 0, 150, 0, 150, 50, 0, 50,
         &this->font, "Parametres",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 
-    this->boutons["EXIT_STATE"] = new Bouton(100, 300, 150, 50,
+    this->boutons["EXIT_STATE"] = new Bouton(100, 300, 0, 0, 150, 0, 150, 50, 0, 50,
         &this->font, "Quittez le jeu",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 }

@@ -17,7 +17,8 @@ class Bouton
 private:
     short unsigned buttonState;
 
-    sf::RectangleShape shape;
+    //sf::RectangleShape shape;
+    sf::ConvexShape convex;
     sf::Font* font;
     sf::Text text;
 
@@ -26,7 +27,7 @@ private:
     sf::Color activeColor;
 
 public:
-    Bouton(float x, float y, float width, float height, sf::Font* font,
+    Bouton(float x, float y, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, sf::Font* font,
         std::string text, sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
     ~Bouton();
 

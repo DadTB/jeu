@@ -44,7 +44,7 @@ void ChoixPays::initKeybinds()
 
 void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
 {
-    this->boutonsniveau1["FRANCE"] = new Bouton(300, 100, 150, 50,
+    this->boutonsniveau1["FRANCE"] = new Bouton(300, 100, 0, 0, 150, 0, 150, 50, 50, 0,
         &this->font, "France",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
     
@@ -66,7 +66,7 @@ void ChoixPays::initBoutonPays(std::string pays)
     while (std::getline(file, line))
     { // Lit ligne par ligne
         //std::cout << "Ligne lue : " << line << std::endl; // Affiche la ligne
-        this->boutonsniveau2[line] = new Bouton(100 * place, 300, 150, 50,
+        this->boutonsniveau2[line] = new Bouton(100 * place, 300, 0, 0, 150, 0,  150, 50, 0, 50,
             &this->font, line,
             sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
             place += 2;
