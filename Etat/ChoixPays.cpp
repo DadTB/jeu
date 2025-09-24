@@ -42,7 +42,7 @@ void ChoixPays::initKeybinds()
     this->keybinds["BOUGER_BAS"] = this->supportedKeys->at("S");
 }
 
-void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu
+void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'écran du menu, il faut rajouter la possibilité de juste lire les fichiers pour créer les boutons
 {
     this->boutonsniveau1["FRANCE"] = new Bouton(300, 100, 0, 0, 150, 0, 150, 50, 50, 0,
         &this->font, "France",
@@ -51,7 +51,7 @@ void ChoixPays::initBouton() // fonction qui permet d'ajouter des boutons sur l'
     
 }
 
-void ChoixPays::initBoutonPays(std::string pays)
+void ChoixPays::initBoutonPays(std::string pays) // permet de créer les boutons en fonction des fichiers
 {
     std::string filename = "common/missions/France/nom_arbre.txt"; // Nom du fichier à lire
     std::ifstream file(filename); // Ouvre le fichier en lecture

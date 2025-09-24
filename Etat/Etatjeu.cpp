@@ -37,6 +37,30 @@ void Etatjeu::initBoutons()
     this->boutons["MENU_DIPLOMATIE"] = new Bouton(0, 0, 0, 0, 150, 0, 150, 50, 0, 50,
         &this->font, "Diplomatie",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_ECONOMIQUE"] = new Bouton(150, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Economie",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_MILITAIRE"] = new Bouton(300, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Militaire",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_MISSION"] = new Bouton(450, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Mission",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_GESTION"] = new Bouton(600, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Gestion",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_REFORME"] = new Bouton(600, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Reforme",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_DYNASTIE"] = new Bouton(750, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Dynastie",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_RELIGIEUX"] = new Bouton(900, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Religion",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+    this->boutons["MENU_CARTE"] = new Bouton(1050, 0, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Carte",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 }
 
 ///////////////////////////////////////////
