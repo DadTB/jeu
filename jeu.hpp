@@ -8,7 +8,6 @@
 #include "Monde/generationterrain.cpp"
 #include "Composant/deplacement.cpp"
 #include "Inventaire/inventaire.cpp"
-//#include "Entitee.cpp"
 #include "Etat/MenuprincipalEtat.cpp"
 
 class Jeu

@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Etat.hpp"
+#include "../../Etat/Etat.cpp"
 
-class Etatjeu : public Etat
+class EtatDiplomatie : public Etat
 {
 private:
-    Joueur* player;
     sf::Font font;
 
     std::map<std::string, Bouton*> boutons;
@@ -13,13 +12,12 @@ private:
     // Fonctions
     void initKeybinds();
     void initTextures();
-    void initJoueur();
     void initBoutons();
     void initFonts();
 
 public:
-    Etatjeu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
-    virtual ~Etatjeu();
+    EtatDiplomatie(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);
+    virtual ~EtatDiplomatie();
 
     // Fonctions
 

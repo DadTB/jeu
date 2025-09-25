@@ -48,6 +48,10 @@ void MenuprincipalEtat::initBouton() // fonction qui permet d'ajouter des bouton
         &this->font, "Nouvelle partie",
         sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
 
+    this->boutons["GAME_STATE_CONTINUE"] = new Bouton(300, 100, 0, 0, 150, 0, 150, 50, 0, 50,
+        &this->font, "Continuer",
+        sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
+
     this->boutons["PARAMETRE"] = new Bouton(100, 200, 0, 0, 150, 0, 150, 50, 0, 50,
         &this->font, "Parametres",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200));
@@ -97,8 +101,12 @@ void MenuprincipalEtat::mettreajourBoutons()
     // Nouvelle Partie
     if (this->boutons["GAME_STATE"]->isPressed())
     {
-        //this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));  // pile etats dans classe jeu de type Etat, pile de classe
         this->etats->push(new ChoixPays(this->window, this->supportedKeys, this->etats));
+    }
+
+    if (this->boutons["GAME_STATE_CONTINUE"]->isPressed())
+    {
+        this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));  // pile etats dans classe jeu de type Etat, pile de classe
     }
 
     // Permet de quittez le jeu

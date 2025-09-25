@@ -120,7 +120,6 @@ void ChoixPays::mettreajourBoutons()
         this->niveau = 2;
         this->choixPays = "France";
         this->initBoutonPays("France");
-        //this->etats->push(new Etatjeu(this->window, this->supportedKeys, this->etats));
     }
 }
 
