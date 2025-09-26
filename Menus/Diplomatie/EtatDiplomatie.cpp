@@ -15,7 +15,21 @@ void EtatDiplomatie::initKeybinds()
 
 void EtatDiplomatie::initTextures()
 {
-    this->textures["JOUEUR_REPOS"].loadFromFile("Ressources/images/Sprites/Joueur/Joueur_repos.png");
+    
+}
+
+void EtatDiplomatie::initBackground()
+{
+    this->background.setSize(
+        sf::Vector2f
+        (static_cast<float>(this->window->getSize().x),
+        static_cast<float>(this->window->getSize().y)));
+
+    if(!this->backgroundTexture.loadFromFile("Ressources/images/backgrounds/fond_ecran_menu_diplomatie.png"))
+    {
+        throw"ERREUR::MENUPRINCIPALETAT::BACKGROUND_PAS_CHARGE";
+    }
+    this->background.setTexture(&this->backgroundTexture);
 }
 
 void EtatDiplomatie::initFonts()
@@ -23,7 +37,7 @@ void EtatDiplomatie::initFonts()
     if(!this->font.loadFromFile("Fonts/02587_ARIALMT.ttf"))
     {
         std::cout << "ça marche pas ici EtatDiplomatie" << std::endl;
-        throw("ERROR::MenuprincipalEtat::COULD NOT LOAD FONT");
+        throw("ERROR::EtatDiplomatie::COULD NOT LOAD FONT");
     }
 }
 
@@ -71,6 +85,7 @@ EtatDiplomatie::EtatDiplomatie(sf::RenderWindow *window, std::map<std::string, i
     this->initKeybinds();
     this->initTextures();
     this->initBoutons();
+    this->initBackground();
 }
 
 EtatDiplomatie::~EtatDiplomatie()
@@ -123,6 +138,8 @@ void EtatDiplomatie::render(sf::RenderTarget *cible)
 {
     if (!cible)
         cible = this->window;
+
+    cible->draw(this->background);
         
     this->renderBoutons(cible);
 }

@@ -6,6 +6,8 @@ class EtatDiplomatie : public Etat
 {
 private:
     sf::Font font;
+    sf::Texture backgroundTexture;
+    sf::RectangleShape background;
 
     std::map<std::string, Bouton*> boutons;
 
@@ -14,6 +16,7 @@ private:
     void initTextures();
     void initBoutons();
     void initFonts();
+    void initBackground();
 
 public:
     EtatDiplomatie(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Etat*>* etats);

@@ -37,11 +37,21 @@ void Entitee::creerSprite(sf::Texture* texture)
 // Fonctions
 ///////////////////////////////
 
-void Entitee::defPosition(float x, float y)
+void Entitee::defPosition(float x, float y, sf::RenderWindow *window)
 {
     if (this->sprite)
     {
-        this->sprite->setPosition(x, y);
+        // On récupère les dimensions de la texture du sprite
+        sf::FloatRect bounds = this->sprite->getLocalBounds();
+
+        // On place l'origine au centre du sprite
+        this->sprite->setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+
+        // On récupère la taille de la fenêtre
+        sf::Vector2u winSize = window->getSize();
+
+        // On place le sprite au centre de la fenêtre
+        this->sprite->setPosition(winSize.x / 2.f, winSize.y / 2.f);
     }
 }
 

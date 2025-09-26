@@ -36,7 +36,7 @@ public:
 
     // Fonctions
 
-    virtual void defPosition(const float x, const float y);
+    virtual void defPosition(const float x, const float y, sf::RenderWindow *window);
     virtual void bouger(const float& dt, const float dir_x, const float dir_y);
 
     virtual void mettreajour(const float& dt);

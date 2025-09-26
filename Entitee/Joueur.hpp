@@ -12,7 +12,7 @@ private:
     void initComposants();
 
 public:
-    Joueur(float x, float y, sf::Texture* texture);
+    Joueur(float x, float y, sf::Texture* texture, sf::RenderWindow *window);
     virtual ~Joueur();
 
     // Fonctions
